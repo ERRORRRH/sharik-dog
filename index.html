@@ -3,59 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шарік — Володар солонини</title>
+    <title>Шарік та Теді</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fff3e0;
-            color: #3e2723;
+            background-color: #e0f7fa;
+            color: #006064;
             text-align: center;
             margin: 0;
             padding: 20px;
         }
         .container {
             max-width: 600px;
-            margin: 40px auto;
+            margin: 20px auto;
             background: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         h1 {
-            color: #e65100;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            font-style: italic;
-            color: #795548;
-            margin-bottom: 30px;
-        }
-        .card {
-            background: #ffe0b2;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 12px;
-            font-size: 1.1em;
-            font-weight: bold;
+            color: #00838f;
+            margin-bottom: 15px;
         }
         p {
             line-height: 1.6;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin: 20px 0;
+        }
+        .slide {
+            display: none;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .btn-prev, .btn-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 12px 18px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            border-radius: 50%;
+            background-color: rgba(0, 131, 143, 0.7);
+            border: none;
+            user-select: none;
+        }
+        .btn-prev { left: 10px; }
+        .btn-next { right: 10px; }
+        .btn-prev:hover, .btn-next:hover {
+            background-color: rgba(0, 131, 143, 1);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Це мій пес Шарік! </h1>
-        <div class="subtitle">Гроза району та любитель смаколиків</div>
+        <h1>Пригоди Шаріка та Теді 🐕</h1>
         
-        <p>Він любить їсти, спати і кусати людей.</p>
-        
-        <div class="card">
-             Особлива пристрасть: він дуже любить солонину і м'ясо!
+        <p>Це пес Шарік, він дуже любить їсти м'ясо і гризти кістки, а це його друг Теді, і вони разом люблять бігати й кусатися.</p>
+
+        <!-- Слайдер з фотографіями -->
+        <div class="slider-container">
+            <div class="slide" style="display: block;">
+                <img src="dog1.png" alt="Шарік">
+            </div>
+            <div class="slide">
+                <img src="dog2.png" alt="Шарік та Теді">
+            </div>
+            <div class="slide">
+                <img src="dog3.png" alt="Шарік близько">
+            </div>
+
+            <!-- Кнопки для перегортання -->
+            <button class="btn-prev" onclick="moveSlide(-1)">❮</button>
+            <button class="btn-next" onclick="moveSlide(1)">❯</button>
         </div>
-        
-        <p>Якщо бачите Шаріка — краще поділіться шматочком, інакше він почне кусатися! </p>
     </div>
+
+    <!-- Скрипт для роботи перегортання -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function moveSlide(step) {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide + step + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'block';
+        }
+    </script>
 </body>
 </html>
+я
